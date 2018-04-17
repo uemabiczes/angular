@@ -1,0 +1,38 @@
+<div class="coords-list">
+  <ul>
+    <li *ngFor="let point of all_points; let i = index">
+      <b>{{i+1}}.</b> {{point.y_coord}}
+    </li>
+  </ul>
+
+  <div class="coords-input">
+    <!--
+    <div class="x-coord">
+      <label>Insert X value: </label>
+      <input [(ngModel)]="x" type="number">
+    </div>
+    -->
+
+
+    <div class="y-coord">
+      <label>Insert Y value: </label>
+      <input [(ngModel)]="y" type="number">
+    </div>
+
+    <div class="button-coord">
+      <button (click)="addNew()">Add point </button>
+    </div>
+
+  </div>
+  <div class="chart" *ngIf="chart?.labels?.length > 0">
+      <!-- ng if as work around for chart issue https://github.com/valor-software/ng2-charts/issues/692 -->
+      <canvas baseChart
+      [datasets]="chart.dataset"
+      [labels]="chart.labels"
+      [colors]="chart.lineChartColors"
+      [chartType]="chart.type"
+      [options]="chart.options"></canvas>
+
+  </div>
+</div>
+
